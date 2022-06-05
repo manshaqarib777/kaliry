@@ -109,7 +109,8 @@ class InstructorRequestController extends Controller
 
             $request->validate([
               'file' => 'mimes:jpeg,png,jpg,bmp,webp,zip,pdf',
-              'image' => 'mimes:jpg,jpeg,png,bmp,webp'
+              'image' => 'mimes:jpg,jpeg,png,bmp,webp',
+              'email' => 'required|email|unique:instructors',
             ]);
 
             $input = $request->all();

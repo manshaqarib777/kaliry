@@ -469,7 +469,6 @@
 						}
 					
 					@endphp
-
 		@if(Auth::user()->role == "user" && $courses->drip_enable == 1 && $class->drip_type != NULL)
 			@if($class->drip_type == 'date' && $class->drip_date != NULL)
 				@if($today >= $class->drip_date)
@@ -641,24 +640,25 @@
 
         	@if($class->type == 'video' && $class->iframe_url == NULL)
 				@if($class->status == '1')
-				<li
-				@if($pauseads->count()>0)
-					data-advertisement-on-pause-source="{{ asset('adv_upload/image/'.$pausead->ad_image)}}" 
-				@endif 
-				@if($chapter->courses['preview_image'] !== NULL && $chapter->courses['preview_image'] !== '') 
-					data-thumb-source="{{ url('images/course/'.$chapter->courses->preview_image) }}"
-				@else
-					data-thumb-source="{{ Avatar::create($chapter->courses->title)->toBase64() }}"
+				<li 
+					@if($pauseads->count()>0)
+						data-advertisement-on-pause-source="{{ asset('adv_upload/image/'.$pausead->ad_image)}}" 
+					@endif 
+					
+					@if($class->courses['preview_image'] !== NULL && $class->courses['preview_image'] !== '')
+						data-thumb-source="{{ url('images/course/'.$class->courses->preview_image) }}"
+					@else
+						data-thumb-source="{{ Avatar::create($class->courses->title)->toBase64() }}"
 				@endif 
 
-					data-video-source="{{ $class->url }}"
+					data-video-source="{{ $url }}"
 
 					data-start-at-time="{{date('H:i:s',strtotime($endtime))}}"
 				
-				@if($chapter->courses['preview_image'] !== NULL && $chapter->courses['preview_image'] !== '') 
-				    data-poster-source="{{ url('images/course/'.$chapter->courses->preview_image) }}" 
+				@if($class->courses['preview_image'] !== NULL && $class->courses['preview_image'] !== '')
+				    data-poster-source="{{ url('images/course/'.$class->courses->preview_image) }}"
 				@else
-					data-poster-source="{{ Avatar::create($chapter->courses->title)->toBase64() }}"  
+					data-poster-source="{{ url('images/default/course.jpg') }}"
 				@endif
 
 				    data-subtitle-soruce="[
@@ -673,23 +673,23 @@
 					@endphp
 						@if($skipads->count()>0)
 						<ul data-ads="">
-							<li @if($skipad->ad_video !="no")
+						<li @if($skipad->ad_video !="no")
 
 							data-source="{{ asset('adv_upload/video/'.$skipad->ad_video) }}" 
 							@else
-							data-source="{{ $skipad->ad_url }}" @endif data-time-start="{{ $skipad->time }}" data-time-to-hold-ads="{{ $skipad->ad_hold }}" data-thumbnail-source="{{asset('images/course/'.$chapter->courses->preview_image)}}" data-link="{{ $skipad->ad_target }}" data-target="_blank"></li>
+							data-source="{{ $skipad->ad_url }}" @endif data-time-start="{{ $skipad->time }}" data-time-to-hold-ads="{{ $skipad->ad_hold }}" data-thumbnail-source="{{asset('images/course/'.$class->courses->preview_image)}}" data-link="{{ $skipad->ad_target }}" data-target="_blank"></li>
 							
 						</ul>
 						@endif
 
 					    <div data-video-short-description="">
 					    	 <p class="minimalDarkCategoriesTitle"><span class="minimialDarkBold">Title: </span>{{ $class->title }}</p>
-		        			 <p class="minimalDarkCategoriesDescription"><span class="minimialDarkBold">Description: </span>{{ $chapter->courses->short_detail }}</p>
+		        			 <p class="minimalDarkCategoriesDescription"><span class="minimialDarkBold">Course: </span>{{ $class->courses->title }}</p>
 					    </div>
 
 					    @php
 						$popupads = App\Ads::where('ad_location','=', 'popup')->get();
-						$popupad = App\Ads::inRandomOrder()->where('ad_location','=','popup')->first();	
+						$popupad = App\Ads::inRandomOrder()->where('ad_location','=','popup')->first(); 
 						@endphp
 
 						@if($popupads->count()>0)

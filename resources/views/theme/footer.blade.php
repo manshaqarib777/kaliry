@@ -70,14 +70,14 @@
                             @endif
 
                             @if(isset($widgets) && $widgets->help_enable == 1)
-                            <li><a href="{{ route('help.show') }}" title="{{ __('Help&Support') }}">{{ __('Help&Support') }}</a></li>
+                            <li><a href="{{ route('help.show') }}" title="{{ __('Help & Support') }}">{{ __('Help & Support') }}</a></li>
                             @endif
                             
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-4">
-                    <div class="widget"><b>{{ $widgets->widget_three }}</b></div>
+                    {{-- <div class="widget"><b>{{ $widgets->widget_three }}</b></div>
                     <div class="footer-link">
                         <ul>
                             
@@ -94,7 +94,7 @@
                             @endif
                             
                         </ul>
-                    </div>
+                    </div> --}}
                 </div>
 
                 @endif
@@ -106,9 +106,11 @@
                     @endphp
                     @if(isset($languages) && count($languages) > 0)
                     <div class="footer-dropdown">
-                        <a href="#" class="a" data-toggle="dropdown"><i data-feather="globe"></i>{{Session::has('changed_language') ? ucfirst(Session::get('changed_language')) : ''}}<i class="fa fa-angle-up lft-10"></i></a>
-                        
-                       
+                        @foreach($languages as $language)
+                            @if($language->local == Session::get('changed_language'))
+                                <a href="#" class="a" data-toggle="dropdown"><i data-feather="globe"></i>{{$language->name}}<i class="fa fa-angle-up lft-10"></i></a>
+                            @endif
+                        @endforeach                       
                         <ul class="dropdown-menu">
                           
                             @foreach($languages as $language)

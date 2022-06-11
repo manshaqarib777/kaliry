@@ -33,7 +33,7 @@ $(function(){
     },
     html: true,
     open: function(event, ui) {
-        $(".ui-autocomplete").css("z-index", 1000);
+        $(".ui-autocomplete").css("z-index", 1000).css("position", "fixed").css("top","70px");
     },
 }).autocomplete("instance")._renderItem = function(ul, item) {
     return $("<li><div><img style='object-fit:scale-down;' width='50px' height='50px' src='" + item.img + "'><span> " + item.value + "</span></div></li>").appendTo(ul);

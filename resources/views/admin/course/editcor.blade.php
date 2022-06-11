@@ -121,7 +121,7 @@
 
                 @if(Auth::User()->role == "admin")
                 <div class="col-md-4">
-                  <label>{{ __('Institute') }}: <span class="redstar">*</span></label>
+                  <label>{{ __('Institute') }}:</label>
                   <select name="institude_id" class="form-control select2">
                     @php
                     $institute = App\Institute::all();

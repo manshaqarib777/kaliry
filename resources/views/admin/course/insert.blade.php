@@ -113,7 +113,7 @@
 
               @if(Auth::User()->role == "admin")
               <div class="col-md-4">
-                <label>{{ __('Institute') }}: <span class="redstar">*</span></label>
+                <label>{{ __('Institute') }}:</label>
                 <select name="institude_id" class="form-control select2">
                   @php
                   $institute = App\Institute::where('status' ,'1')->get();
@@ -130,7 +130,7 @@
 
               @if(Auth::User()->role == "instructor")
               <div class="col-md-4">
-                <label>{{ __('Institute') }}: <span class="redstar">*</span></label>
+                <label>{{ __('Institute') }}:</label>
                 <select name="institude_id" class="form-control select2">
                   @php
                   $institute = App\Institute::where('user_id',Auth::user()->id)->where('status' ,'1')->get();
@@ -329,7 +329,9 @@
               <div class="col-md-6">
                 <label for="exampleInputDetails">{{ __('adminstaticword.PreviewVideo') }}:</label>
                 <input id="preview" type="checkbox" class="custom_toggle" name="preview_type" />
-                <label class="tgl-btn" data-tg-off="{{ __('adminstaticword.URL') }}" data-tg-on="{{ __('adminstaticword.Upload') }}" for="preview"></label>                
+                <label class="tgl-btn" data-tg-off="{{ __('adminstaticword.URL') }}" data-tg-on="{{ __('adminstaticword.Upload') }}" for="preview"></label>
+                <small class="text-muted"><i class="fa fa-question-circle"></i> {{ __('If enabled enter Upload Video') }},</small>
+                <small class="text-muted"> {{ __('when Disabled enter URL') }}.</small>                
              
                 <div style="display: none;" id="document1">
                   <label for="exampleInputSlug">{{ __('adminstaticword.UploadVideo') }}:</label>
@@ -427,6 +429,8 @@
                 <label for="">{{ __('adminstaticword.DripContent') }}: </label>
                 <input id="drip_enable" type="checkbox" class="custom_toggle" name="drip_enable" checked />
                 <label class="tgl-btn" data-tg-off="Disable" data-tg-on="Enable" for="drip_enable"></label>
+                <small class="text-muted"><i class="fa fa-question-circle"></i> {{ __('drip content is the practice of releasing your content to your members in parts') }},</small>
+                
               </div>
           </div>
           <br>

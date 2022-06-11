@@ -1018,9 +1018,9 @@ sup.redstar {
   align-items: center;
 }
 .view-heading a {
-  font-size: 14px;
+  font-size: 18px;
   color: var(--text-black-color);
-  font-weight: 500;
+  font-weight: 800;
   position: absolute;
   margin-top: auto;
   margin-bottom: auto;
@@ -1291,7 +1291,7 @@ sup.redstar {
   border-radius: 6px;
   text-align: center;
   margin-bottom: 20px;
-  width: 100px;
+  width: 150px;
 }
 .footer-dropdown .a {
   border: none;

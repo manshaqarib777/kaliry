@@ -224,17 +224,17 @@
         },
 
         _actions: {
-            copy_url: function (item) {
-                return "<div class='midia-option midia-copy-url' data-clipboard-text='"+item.url+"'>"+midiaLang["Copy URL"]+"</div>";
-            },
+            // copy_url: function (item) {
+            //     return "<div class='midia-option midia-copy-url' data-clipboard-text='"+item.url+"'>"+midiaLang["Copy URL"]+"</div>";
+            // },
 
-            download: function (item) {
-                return "<a href='"+item.url+"' class='midia-option' download>"+midiaLang["Download"]+"</a>";
-            },
+            // download: function (item) {
+            //     return "<a href='"+item.url+"' class='midia-option' download>"+midiaLang["Download"]+"</a>";
+            // },
 
-            rename: function (item) {
-                return "<div class='midia-option midia-rename'>"+midiaLang["Rename"]+"</div>";
-            },
+            // rename: function (item) {
+            //     return "<div class='midia-option midia-rename'>"+midiaLang["Rename"]+"</div>";
+            // },
 
             delete: function (item) {
                 return "<div class='midia-option midia-option-divider'></div>"
@@ -473,7 +473,7 @@
             if (options.actions.length) {
                 file += "<div class='midia-options-toggle'>&#9776;</div>";
                 file += "<div class='midia-options'>";
-                file += "<div class='midia-option'><strong>"+midiaLang["Options"]+"</strong> : </div>";
+                // file += "<div class='midia-option'><strong>"+midiaLang["Options"]+"</strong> : </div>";
                 $.each(options.actions, function (index, action) {
                     if (midia._actions[action] !== undefined) {
                         file += midia._actions[action](item);

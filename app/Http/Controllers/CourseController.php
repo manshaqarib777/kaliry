@@ -173,7 +173,7 @@ class CourseController extends Controller
             'video' => 'mimes:mp4,avi,wmv',
             'slug' => 'required|unique:courses,slug',
             'language_id' =>'required|not_in:0',
-            'institude_id' => 'required|not_in:0',
+            // 'institude_id' => 'required|not_in:0',
             'preview_image' => 'required',
             'course_tags' => 'required'
         ]);
@@ -360,7 +360,7 @@ class CourseController extends Controller
           'video' => 'mimes:mp4,avi,wmv',
           'slug' => 'required|unique:courses,slug,'. $course->id,
           'language_id' =>'required|not_in:0',
-          'institude_id' => 'required|not_in:0',
+          // 'institude_id' => 'required|not_in:0',
           'preview_image' => 'required',
           // 'course_tags' => 'required'
 
@@ -589,16 +589,16 @@ class CourseController extends Controller
             
             $course = Course::find($id);
             
-            if ($course->preview_image != null)
-            {
+            // if ($course->preview_image != null)
+            // {
                     
-                $image_file = @file_get_contents(public_path().'/images/course/'.$course->preview_image);
+            //     $image_file = @file_get_contents(public_path().'/images/course/'.$course->preview_image);
 
-                if($image_file)
-                {
-                    unlink(public_path().'/images/course/'.$course->preview_image);
-                }
-            }
+            //     if($image_file)
+            //     {
+            //         unlink(public_path().'/images/course/'.$course->preview_image);
+            //     }
+            // }
             if ($course->video != null)
             {
                     

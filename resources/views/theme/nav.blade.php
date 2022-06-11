@@ -228,8 +228,9 @@
                         <a href="{{route('profile.show',Auth::User()->id)}}"><li><i data-feather="user"></i>{{ __('frontstaticword.UserProfile') }}</li></a>
                         @if(Auth::User()->role == "user")
                         @if($gsetting->instructor_enable == 1)
-                        <a href="#" data-toggle="modal" data-target="#myModalinstructor" title="Become An Instructor"><li><i data-feather="shield"></i>{{ __('frontstaticword.BecomeAnInstructor') }}</li></a>
-
+                            @if(App\Instructor::where('user_id', Auth::user()->id)->first()==null)
+                                <a href="#" data-toggle="modal" data-target="#myModalinstructor" title="Become An Instructor"><li><i data-feather="shield"></i>{{ __('frontstaticword.BecomeAnInstructor') }}</li></a>
+                            @endif
                         @endif
                 
                         @endif
@@ -527,7 +528,7 @@
                         </div>
                     </div>
                     <div class="col-lg-1 col-md-1 col-sm-2 col-2">
-                        <div class="search search-one" id="search">
+                        {{-- <div class="search search-one" id="search">
                             <form method="GET" id="searchform" action="{{ route('search') }}">
                               <div class="search-input-wrap">
                                 <input class="search-input" name="searchTerm" placeholder="Search in Site" type="text" id="course_name" autocomplete="off" />
@@ -536,7 +537,7 @@
                               <div class="icon"><i data-feather="search"></i></div>
                               <div id="course_data"></div>
                             </form>
-                        </div>
+                        </div> --}}
                        
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-6 col-6">
@@ -586,8 +587,9 @@
                                 <a href="{{route('profile.show',Auth::User()->id)}}"><li><i data-feather="user"></i>{{ __('frontstaticword.UserProfile') }}</li></a>
                                 @if(Auth::User()->role == "user")
                                 @if($gsetting->instructor_enable == 1)
-                                <a href="#" data-toggle="modal" data-target="#myModalinstructor" title="Become An Instructor"><li><i data-feather="shield"></i>{{ __('frontstaticword.BecomeAnInstructor') }}</li></a>
-
+                                    @if(App\Instructor::where('user_id', Auth::user()->id)->first()==null)
+                                        <a href="#" data-toggle="modal" data-target="#myModalinstructor" title="Become An Instructor"><li><i data-feather="shield"></i>{{ __('frontstaticword.BecomeAnInstructor') }}</li></a>
+                                    @endif
                                 @endif
                         
                                 @endif

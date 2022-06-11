@@ -101,22 +101,22 @@
                   </td>
                   <td>{{$cat->slug}}</td>
                   <td>
-                    <button type="button" class="btn btn-rounded {{ $cat->featured == '1' ? 'checked' : '' ? 'btn-success-rgba' : 'btn-danger-rgba' }}">
+                    <span class="badge badge-round {{ $cat->featured == '1' ? 'checked' : '' ? 'badge-success' : 'badge-danger' }}" style="font-size: 15px">
                       @if( $cat->featured)
                         {{ __('adminstaticword.Active') }}
                         @else
                         {{ __('adminstaticword.Deactive') }}
                         @endif 
-                  </button>
+                  </span>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-rounded {{ $cat->status == '1' ? 'checked' : '' ? 'btn-success-rgba' : 'btn-danger-rgba' }}">
+                    <span class="badge badge-round {{ $cat->status == '1' ? 'checked' : '' ? 'badge-success' : 'badge-danger' }}" style="font-size: 15px">
                       @if( $cat->status)
                         {{ __('adminstaticword.Active') }}
                         @else
                         {{ __('adminstaticword.Deactive') }}
                         @endif 
-                  </button>
+                  </span>
                   </td>
                   <td>
                     <div class="dropdown">

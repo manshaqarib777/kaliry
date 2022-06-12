@@ -495,14 +495,14 @@ $gets = App\Breadcum::first();
 	                            <div class="card-header" id="headingSix">
 							        <div class="panel-title">
 							            <label for='r16'>
-							              <input type='radio' id='r16' name='occupation' value='Working' required />
+							              <input type='radio' id='r16' name='occupation' value='Working' checked required />
 							              <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix"></a>
 							              <img src="{{ url('images/payment/razorpay.png') }}"  class="img-fluid" alt="course"> 
 							            </label>
 							            
 							        </div>
 						    	</div>
-							    <div id="collapseSix" class="panel-collapse collapse in">
+							    <div id="collapseSix" class="panel-collapse collapse show">
 							        <div class="card-body">
 		                            	<div class="payment-proceed-btn">
 		                            		<form action="{{ route('dopayment') }}" method="POST">

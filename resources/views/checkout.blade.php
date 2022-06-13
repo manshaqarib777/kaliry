@@ -504,7 +504,7 @@
 												    data-description=""
 												    data-image="{{ asset('images/logo/'.$gsetting->logo) }}"
 												    data-prefill.name="XYZ"
-												    data-prefill.email="info@example.com"
+												    data-prefill.email="{{Auth::User()->email}}"
 												    data-theme.color="#F44A4A"
 												></script>
 		                            		</form>

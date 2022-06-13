@@ -49,11 +49,13 @@ class InstructorRequestController extends Controller
             $show = User::where('id', $request->user_id)->first();
             $input['role'] = 'user';
             
-            User::where('id', $request->user_id)
-                    ->update(['role' => 'user']);
+            $user = User::where('id', $request->user_id)->first();
+            $user->update(['role' => 'user']);
             Instructor::where('user_id', $request->user_id)
                     ->update(['status' => 0]);
-            
+            if ($request->role) {
+                $user->syncRoles("user");
+            }   
         }
         else
         { 
@@ -61,11 +63,13 @@ class InstructorRequestController extends Controller
             $show = User::where('id', $request->user_id)->first();
             $abc['role'] = $request->role;
             
-            User::where('id', $request->user_id)
-                    ->update(['role' => $request->role]);
+            $user = User::where('id', $request->user_id)->first();
+            $user->update(['role' => $request->role]);
             Instructor::where('user_id', $request->user_id)
                     ->update(['status' => 1]);
-            
+            if ($request->role) {
+                $user->syncRoles($request->role);
+            }            
         }
 
         $show = User::where('id', $request->user_id)->first();

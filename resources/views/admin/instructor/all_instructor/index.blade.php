@@ -100,11 +100,12 @@
                                     <button class="btn btn-round btn-primary-rgba" type="button" id="CustomdropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="feather icon-more-vertical-"></i></button>
                                     <div class="dropdown-menu" aria-labelledby="CustomdropdownMenuButton3">
                                         <a class="dropdown-item"  href="{{route('requestinstructor.edit',$item->id)}}"><i class="feather icon-eye mr-2"></i>{{ __("View")}}</a>
-                                        <a class="dropdown-item" data-toggle="modal" data-target=".bd-example-modal-sm"><i class="feather icon-delete mr-2"></i>{{ __("Delete")}}</a>
+                                        <a class="dropdown-item"  data-toggle="modal"
+                                        data-target="#instructordelete{{ $item->id }}"><i class="feather icon-delete mr-2"></i>{{ __("Delete")}}</a>
                                       </div>
                                 </div>
                               </td>
-                              <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true">
+                              <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-hidden="true" id="instructordelete{{$item->id}}">
                                   <div class="modal-dialog modal-sm">
                                       <div class="modal-content">
                                           <div class="modal-header">
